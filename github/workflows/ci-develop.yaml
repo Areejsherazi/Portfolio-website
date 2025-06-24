@@ -1,0 +1,14 @@
+name: Linting Check
+
+on:
+  pull_request:
+    branches: [develop]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm install
+      - run: npx htmlhint "src/**/*.html"
+      - run: npx stylelint "styles/**/*.css"
